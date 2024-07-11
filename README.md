@@ -16,7 +16,7 @@
     $ python3 -m venv .venv
   
 ### Activate the environment:
-    $ . .venv/bin/activate
+    $ .venv/bin/activate
 
 ### Install Flask:
     $ pip install Flask
