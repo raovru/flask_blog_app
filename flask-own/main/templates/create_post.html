@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class = "content section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class = "mb-3">
+                {{ form.title.label(class="form-label") }}
+                {{ form.title(class="form-control", id="exampleFormControlInput1", placeholder="Do NOT trust that fraud.") }}
+                {% if form.title.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.title.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3">
+                {{ form.content.label(class="form-label") }}
+                {{ form.content(class="form-control", id="exampleFormControlTextarea1", placeholder="Source: Zidane's shampoo", rows = 5) }}
+                {% if form.content.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.content.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+    </div>  
+{% endblock content %}

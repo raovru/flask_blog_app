@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class = "content section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class = "mb-3">
+                {{ form.email.label(class="form-label")}}
+                {{ form.email(class="form-control", id="exampleInputEmail1") }}
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                {% if form.email.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3">
+                {{ form.password.label(class="form-label")}}
+                {{ form.password(class="form-control", id="exampleInputPassword1") }}
+                {% if form.password.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3 form-check">
+                {{ form.remember_me(class="form-check-input", id="exampleCheck1") }}
+                {{ form.remember_me.label(class="form-check-label", for="exampleCheck1") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class = "border-top pt-3">
+        <small class = "text-muted">
+            Do not have an account? <a class = "ml-2" href = "{{ url_for('register') }}">Sign Up</a>
+        </small>
+    </div>  
+{% endblock content %}

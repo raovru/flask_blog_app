@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class = "content section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class = "mb-3">
+                {{ form.username.label(class="form-label")}}
+                {{ form.username(class="form-control", id="exampleInputEmail1") }}
+                {% if form.username.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.username.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3">
+                {{ form.email.label(class="form-label")}}
+                {{ form.email(class="form-control", id="exampleInputEmail1") }}
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                {% if form.email.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3">
+                {{ form.password.label(class="form-label")}}
+                {{ form.password(class="form-control", id="exampleInputPassword1") }}
+                {% if form.password.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class = "mb-3">
+                {{ form.confirm_password.label(class="form-label")}}
+                {{ form.confirm_password(class="form-control", id="exampleInputPassword1") }}
+                {% if form.confirm_password.errors %}
+                    <div class="invalid-feedback d-block">
+                        {% for error in form.confirm_password.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class = "border-top pt-3">
+        <small class = "text-muted">
+            Already have an account? <a class = "ml-2" href = "{{ url_for('login') }}">Log In</a>
+        </small>
+    </div>  
+{% endblock content %}
