@@ -1,0 +1,11 @@
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore Python virtual environment
+venv/
+
+# Ignore instance folder (contains site.db)
+instance/
