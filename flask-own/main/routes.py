@@ -44,10 +44,6 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
             return redirect(url_for('home'))
-            if next_page:
-                return redirect(next_page)
-            else:
-                return redirect(url_for('home'))
         else:
             flash('Login unsuccessful. Check credentials again', 'danger')
     return render_template('login.html', title='login', form=form)
