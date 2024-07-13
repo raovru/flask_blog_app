@@ -17,9 +17,15 @@
   
 ### Activate the environment:
     $ . .venv/bin/activate
+    
+### Install requirements.txt:
+    $ pip install -r requirements.txt
+
 
 ### Install Flask:
     $ pip install Flask
 
 ### Running the application
     $ python3 run.py
+    
+
