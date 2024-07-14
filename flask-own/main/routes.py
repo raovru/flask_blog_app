@@ -11,8 +11,9 @@ from PIL import Image
 @app.route("/home")
 def home():
     # grab all the posts
-    posts = Posts.query.all()
-    return render_template('home.html', posts = posts)
+    page =request.args.get('page', 1, type=int)
+    posts = Posts.query.order_by(Posts.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('home.html', posts = posts, page=page)
 
 @app.route("/about")
 def about():
@@ -43,7 +44,11 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
-            return redirect(url_for('home'))
+            # For example, if the URL is http://example.com/page?next=/dashboard, then request.args.get("next") would return the string "/dashboard". 
+            if next_page:
+                return redirect(next_page)
+            else:
+                return redirect(url_for('home'))
         else:
             flash('Login unsuccessful. Check credentials again', 'danger')
     return render_template('login.html', title='login', form=form)
